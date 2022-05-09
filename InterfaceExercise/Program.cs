@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace InterfaceExercise
 {
@@ -6,39 +7,58 @@ namespace InterfaceExercise
     {
         static void Main(string[] args)
         {
-            //TODO Be sure to follow BEST PRACTICES when creating classes and interfaces
 
-            //Create 2 Interfaces called IVehicle & ICompany
+            Car car1 = new Car();
 
-            //Create 3 classes called Car , Truck , & SUV
+            car1.IsCompact = true;
+            car1.VehYear = 2022;
+            car1.VehMake = "Rolls Royce";
+            car1.VehModel = "Phantom";
+            car1.WheelSize = 15.6;
+            car1.Name = "BMW";
+            car1.Logo = "RR (Eagle Symbol)";
+            //car1.EngineIsWorking();
+            //car1.HornIsWorking();
+            //car1.ZeroTo60Speed(4.1);
 
-            //In your IVehicle
-            
-                /* Create 4 members that Car, Truck, & SUV all have in common.
-                 * Example: All vehicles have a number of wheels... for now..
-                 */
-            
+            SUV suv1 = new SUV();
 
-            //In ICompany
-            
-                /*Create 2 members that are specific to each every company
-                 * regardless of vehicle type.
-                 *
-                 *
-                 * Example: public string Logo { get; set; }
-                 */
+            suv1.CabinSize = "Huge";
+            suv1.HeightFromGround = 2;
+            suv1.VehYear = 2021;
+            suv1.VehMake = "Lincoln";
+            suv1.VehModel = "Navigator";
+            suv1.WheelSize = 17.2;
+            suv1.Name = "Ford Motor Company";
+            suv1.Logo = "Lincoln (Cross Symbol)";
+            //suv1.EngineIsWorking();
+            //suv1.HornIsWorking();
 
-            //In each of your car, truck, and suv classes
+            Truck truck1 = new Truck();
 
-                /*Create 2 members that are specific to each class
-                 * Example: truck has a bed size while car has a trunk while suv has a cargo hold size
-                 *
-                 * Then, Set each class to inherit from both IVehicle and ICompany and implement their members.
-                 * 
-                 */
+            truck1.BedSize = 8;
+            truck1.HasFrontBenchSeat = false;
+            truck1.VehYear = 2018;
+            truck1.VehMake = "Ford";
+            truck1.VehModel = "F-150";
+            truck1.WheelSize = 16.8;
+            truck1.Name = "Ford Motor Company";
+            truck1.Logo = "Ford F-150 Symbols";
+            //truck1.EngineIsWorking();
+            //truck1.HornIsWorking();
 
-            //Now, create objects of your 3 classes and give their members values;
-            //Creatively display and organize their values
+            var vehicles = new List<IVehicle>();
+
+            vehicles.Add(car1);
+            vehicles.Add(suv1);
+            vehicles.Add(truck1);
+
+            foreach (var veh in vehicles)
+            {
+                Console.WriteLine($"The {veh.VehYear} {veh.VehMake} {veh.VehModel} has a wheel size of: {veh.WheelSize}, " +
+                                  $"and is made by {veh.Name}.");
+                Console.WriteLine("");
+            }
         }
     }
 }
